@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autoservise.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Autoservise.org</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Публикации<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Блоги</a></li>
+                    <li><a href="#">Вопросы и ответы</a></li>
+                    <li><a href="#">Тендеры</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Люди</a></li>
+            <li><a href="#">Транспорт</a></li>
+            <li><a href="#">Карта</a></li>
+            <li><a href="#">Помощь</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Войти</a></li>
+        </ul>
+        <form class="navbar-form navbar-right " role="search">
+            <div class="form-group ">
+                <input type="text" class="form-control" placeholder="Поиск">
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="container main-container">
+<div class="row">
+<div class="col-md-9">
+    <div class="filters ">
+        <div class="btn-group content-filter" data-toggle="buttons">
+            <label class="btn btn-filter active">
+                <input type="radio" name="options" id="option1"> ВСЕ
+            </label>
+            <label class="btn btn-filter">
+                <input type="radio" name="options" id="option2"> ПОЛЬЗОВАТЕЛЕЙ
+            </label>
+            <label class="btn btn-filter">
+                <input type="radio" name="options" id="option3"> КОРПОРАТИВНЫЕ
+            </label>
+            <a data-toggle="modal" href="#myModal" id="add-new-post" class="btn btn-filter"><span class="glyphicon glyphicon-plus-sign" style="font-size: 14px"></span> Новый пост</a>
+        </div>
+        <div class="sub-filter">
+           <div class="sub-filter-content active">
+               <a href="#">Лучшие</a> |
+               <a href="#">Новые</a> |
+               <a href="#">Подряд</a>
+           </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Новый пост</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="new-post-form">
+                        <input type="text" class="form-control" id="new-post-title" placeholder="Название поста">
+                        <br>
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active"><a href="#text-content">Текст</a></li>
+                            <li><a href="#preview">Предпросмотр</a></li>
+                            <li><a href="#markdown-help">Справка по Markdown</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="text-content">
+                                <textarea name="text" id="new-post-content"
+                                          placeholder="Текст поста в формате Markdown"></textarea>
+                            </div>
+                            <div class="tab-pane" id="preview">
+                                <div id="empty-preview" class="text-muted">Отсутствует текст для предпросмотра</div>
+                                <div id="preview-content"></div>
+                            </div>
+                            <div class="tab-pane" id="markdown-help">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Текст</strong>
+                                        <pre># - &lt;h1&gt; <br>## - &lt;h2&gt; <br>###### - &lt;h6&gt; </pre>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Списки</strong>
+                                        <pre>* Item 1<br>* Item 2<br> * Item 2a<br> * Item 2b</pre>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Разное</strong><br>
+                                        <small class="text-muted">Изображения</small>
+                                        <pre>![Alt Text](url)</pre>
+                                        <small class="text-muted">Ссылки</small>
+                                        <pre>![Текст](url)</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <input type="submit" class=" btn btn-primary" value="Сохранить">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="date">2 часа 5 минут назад</div>
+        <h3><span class="company">Блог компании АТМ-Авто</span> - Меняем тормозные колодки на БМВ</h3>
+        <div class="tags">
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Легковое
+                авто</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> BMW</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Техническое
+                обслуживание</a>
+        </div>
+        <img src="http://placehold.it/600x350/eeeeee" class="img-thumbnail">
+        <p>Тормозные колодки изнашиваются довольно быстро особенно при экстремальной езде. Конечно же срок износа
+            зависит так же и от качества материала колодок. Но рано или поздно приходит время их замены. В этой статье я
+            не буду концентрироваться на фирмах-производителях, так как их существует преогромное множество и нельзя
+            сказать, какая из компаний достойна ваших денег под конкретный автомобиль. В этой статье я расскажу как
+            быстро и качественно в «гаражных» условиях поменять тормозные колодки на своей машине.</p>
+        <button class="btn btn-default">Читать дальше →</button>
+
+        <hr class="top-line">
+        <div class="post-stat">
+            <span class="glyphicon glyphicon-thumbs-up"></span> <span class="like-up count">+125</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span> <span class="like-up count">-10</span>
+            <span class="glyphicon glyphicon-star"></span> <span class="star count">256</span>
+            <span class="glyphicon glyphicon-user"></span> <span class="count">some-user-name</span>
+            <span class="glyphicon glyphicon-comment" title="Просмотров"></span> <span class="count">1258</span>
+
+            <div class="social pull-right">
+                <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email" data-url="http://example.com" data-title="example"></div>
+            </div>
+        </div>
+        <hr class="bottom-line">
+    </div>
+    <div class="post">
+        <div class="date">2 часа 5 минут назад</div>
+        <h3><span class="company">Блог компании АТМ-Авто</span> - Меняем тормозные колодки на БМВ</h3>
+        <div class="tags">
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Легковое
+                авто</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> BMW</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Техническое
+                обслуживание</a>
+        </div>
+        <p>Тормозные колодки изнашиваются довольно быстро особенно при экстремальной езде. Конечно же срок износа
+            зависит так же и от качества материала колодок. Но рано или поздно приходит время их замены. В этой статье я
+            не буду концентрироваться на фирмах-производителях, так как их существует преогромное множество и нельзя
+            сказать, какая из компаний достойна ваших денег под конкретный автомобиль. В этой статье я расскажу как
+            быстро и качественно в «гаражных» условиях поменять тормозные колодки на своей машине.</p>
+        <button class="btn btn-default">Читать дальше →</button>
+
+        <hr class="top-line">
+        <div class="post-stat">
+            <span class="glyphicon glyphicon-thumbs-up"></span> <span class="like-up count">+125</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span> <span class="like-up count">-10</span>
+            <span class="glyphicon glyphicon-star"></span> <span class="star count">256</span>
+            <span class="glyphicon glyphicon-user"></span> <span class="count">some-user-name</span>
+            <span class="glyphicon glyphicon-comment" title="Просмотров"></span> <span class="count">1258</span>
+
+            <div class="social pull-right">
+                <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email" data-url="http://example.com" data-title="example"></div>
+            </div>
+        </div>
+        <hr class="bottom-line">
+    </div>
+    <div class="post">
+        <div class="date">2 часа 5 минут назад</div>
+        <h3><span class="company">Блог компании АТМ-Авто</span> - Меняем тормозные колодки на БМВ</h3>
+        <div class="tags">
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Легковое
+                авто</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> BMW</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Техническое
+                обслуживание</a>
+        </div>
+        <p>Тормозные колодки изнашиваются довольно быстро особенно при экстремальной езде. Конечно же срок износа
+            зависит так же и от качества материала колодок. Но рано или поздно приходит время их замены. В этой статье я
+            не буду концентрироваться на фирмах-производителях, так как их существует преогромное множество и нельзя
+            сказать, какая из компаний достойна ваших денег под конкретный автомобиль. В этой статье я расскажу как
+            быстро и качественно в «гаражных» условиях поменять тормозные колодки на своей машине.</p>
+        <button class="btn btn-default">Читать дальше →</button>
+        <hr class="top-line">
+        <div class="post-stat">
+            <span class="glyphicon glyphicon-thumbs-up"></span> <span class="like-up count">+125</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span> <span class="like-up count">-10</span>
+            <span class="glyphicon glyphicon-star"></span> <span class="star count">256</span>
+            <span class="glyphicon glyphicon-user"></span> <span class="count">some-user-name</span>
+            <span class="glyphicon glyphicon-comment" title="Просмотров"></span> <span class="count">1258</span>
+
+            <div class="social pull-right">
+                <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email" data-url="http://example.com" data-title="example"></div>
+            </div>
+        </div>
+        <hr class="bottom-line">
+    </div>
+    <div class="post">
+        <div class="date">2 часа 5 минут назад</div>
+        <h3><span class="company">Блог компании АТМ-Авто</span> - Меняем тормозные колодки на БМВ</h3>
+        <div class="tags">
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Легковое
+                авто</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> BMW</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Техническое
+                обслуживание</a>
+        </div>
+        <p>Тормозные колодки изнашиваются довольно быстро особенно при экстремальной езде. Конечно же срок износа
+            зависит так же и от качества материала колодок. Но рано или поздно приходит время их замены. В этой статье я
+            не буду концентрироваться на фирмах-производителях, так как их существует преогромное множество и нельзя
+            сказать, какая из компаний достойна ваших денег под конкретный автомобиль. В этой статье я расскажу как
+            быстро и качественно в «гаражных» условиях поменять тормозные колодки на своей машине.</p>
+        <button class="btn btn-default">Читать дальше →</button>
+        <hr class="top-line">
+        <div class="post-stat">
+            <span class="glyphicon glyphicon-thumbs-up"></span> <span class="like-up count">+125</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span> <span class="like-up count">-10</span>
+            <span class="glyphicon glyphicon-star"></span> <span class="star count">256</span>
+            <span class="glyphicon glyphicon-user"></span> <span class="count">some-user-name</span>
+            <span class="glyphicon glyphicon-comment" title="Просмотров"></span> <span class="count">1258</span>
+
+            <div class="social pull-right">
+                <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email" data-url="http://example.com" data-title="example"></div>
+            </div>
+        </div>
+        <hr class="bottom-line">
+    </div>
+    <div class="post">
+        <div class="date">2 часа 5 минут назад</div>
+        <h3><span class="company">Блог компании АТМ-Авто</span> - Меняем тормозные колодки на БМВ</h3>
+        <div class="tags">
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Легковое
+                авто</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> BMW</a>
+            <a href="" class="btn btn-default btn-xs tag"><span class="glyphicon glyphicon-tag"></span> Техническое
+                обслуживание</a>
+        </div>
+        <p>Тормозные колодки изнашиваются довольно быстро особенно при экстремальной езде. Конечно же срок износа
+            зависит так же и от качества материала колодок. Но рано или поздно приходит время их замены. В этой статье я
+            не буду концентрироваться на фирмах-производителях, так как их существует преогромное множество и нельзя
+            сказать, какая из компаний достойна ваших денег под конкретный автомобиль. В этой статье я расскажу как
+            быстро и качественно в «гаражных» условиях поменять тормозные колодки на своей машине.</p>
+        <button class="btn btn-default">Читать дальше →</button>
+        <hr class="top-line">
+        <div class="post-stat">
+            <span class="glyphicon glyphicon-thumbs-up"></span> <span class="like-up count">+125</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span> <span class="like-up count">-10</span>
+            <span class="glyphicon glyphicon-star"></span> <span class="star count">256</span>
+            <span class="glyphicon glyphicon-user"></span> <span class="count">some-user-name</span>
+            <span class="glyphicon glyphicon-comment" title="Просмотров"></span> <span class="count">1258</span>
+
+            <div class="social pull-right">
+                <div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email" data-url="http://example.com" data-title="example"></div>
+            </div>
+        </div>
+        <hr class="bottom-line">
+    </div>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+</div>
+<div class="col-md-3 ">
+    <div class="pull-right right-side">
+        <img src="http://placehold.it/220x450/eeeeee">
+        <div class="well space-filter">
+            <div class="title">Навигатор</div>
+            <select>
+                <option selected="" value="Все типы транспорта">Все типы транспорта</option>
+                <option value="Легковые автомобили">Легковые автомобили</option>
+                <option value="Мотоциклетный транспорт">Мотоциклетный транспорт</option>
+                <option value="Коммерческая техника">Коммерческая техника</option>
+            </select>
+            <select>
+                <option>Все марки</option>
+            </select>
+            <select>
+                <option selected="" value="Все категории">Все категории</option>
+                <option value="Тест-драйвы и обзоры">Тест-драйвы и обзоры</option>
+                <option value="Общение с дилерами">Общение с дилерами</option>
+                <option value="Покупка транспорта">Покупка транспорта</option>
+                <option value="Страхование">Страхование</option>
+                <option value="Стоимость владения">Стоимость владения</option>
+                <option value="Техническое обслуживание">Техническое обслуживание</option>
+                <option value="Шины и диски">Шины и диски</option>
+                <option value="Поломка">Поломка</option>
+                <option value="Кузовной ремонт">Кузовной ремонт</option>
+                <option value="Запчасти и аксессуары">Запчасти и аксессуары</option>
+                <option value="Нарушение ПДД">Нарушение ПДД</option>
+                <option value="ДТП (Происшествия)">ДТП (Происшествия)</option>
+                <option value="Стайлинг">Стайлинг</option>
+                <option value="Тюнинг">Тюнинг</option>
+                <option value="Автозвук">Автозвук</option>
+                <option value="Креатив">Креатив</option>
+                <option value="Мероприятия">Мероприятия</option>
+                <option value="Путешествие">Путешествие</option>
+                <option value="Фото и видео">Фото и видео</option>
+                <option value="Интересный случай">Интересный случай</option>
+                <option value="Продажа транспорта">Продажа транспорта</option>
+                <option value="Разное">Разное</option>
+            </select>
+            <button class="btn btn-default btn-sm">Посмотреть</button>
+        </div>
+        <div class="well last-best" data-spy="affix" data-offset-top="750" data-offset-bottom="200">
+            <div class="title">Лучшее за 24 часа</div>
+            <ul class="list-unstyled">
+                <li><a href="#">Меняем тормозные колодки на БМВ</a></li>
+                <li><a href="#">Покупаем подержанное авто</a></li>
+                <li><a href="#">Меняем тормозные колодки на БМВ</a></li>
+                <li><a href="#">Покупаем подержанное авто</a></li>
+                <li><a href="#">Меняем тормозные колодки на БМВ</a></li>
+            </ul>
+            <a href="#" class="all-best">все лучшие</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="logo">Autoservise.org</div>
+            </div>
+            <div class="col-md-2">
+                <strong>Разделы</strong>
+                <ul class="list-unstyled">
+                    <li><a href="#">Вопросы и ответы</a></li>
+                    <li><a href="#">Тендеры</a></li>
+                    <li><a href="#">Блоги</a></li>
+                    <li><a href="#">Компании</a></li>
+                    <li><a href="#">Люди</a></li>
+                    <li><a href="#">Транспорт</a></li>
+                    <li><a href="#">Карта</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <strong>Информация</strong>
+                <ul class="list-unstyled">
+                    <li><a href="#">О сайте</a></li>
+                    <li><a href="#">Правила</a></li>
+                    <li><a href="#">Блоги</a></li>
+                    <li><a href="#">Помощь</a></li>
+                    <li><a href="#">Статистика</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <strong>Услуги</strong>
+                <ul class="list-unstyled">
+                    <li><a href="#">Реклама</a></li>
+                    <li><a href="#">Партнерство</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/markdown.js"></script>
+<script src="js/ui.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+</body>
+</html>
